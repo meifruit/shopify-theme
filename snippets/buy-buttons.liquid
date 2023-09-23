@@ -74,27 +74,27 @@
             endif
           -%}
           {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-{%- else -%}
-  <button
-    id="ProductSubmitButton-{{ section_id }}"
-    type="submit"
-    name="add"
-    class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-  >
-    <span>{{ 'products.product.add_to_cart' | t }}</span>
-    <div class="loading-overlay__spinner hidden">
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        class="spinner"
-        viewBox="0 0 66 66"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-      </svg>
-    </div>
-  </button>
-{%- endif -%}
+            {%- else -%}
+            <button
+              id="ProductSubmitButton-{{ section_id }}"
+              type="submit"
+              name="add"
+              class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            >
+              <span>{{ 'products.product.add_to_cart' | t }}</span>
+              <div class="loading-overlay__spinner hidden">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                </svg>
+              </div>
+            </button>
+            {%- endif -%}
 
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
