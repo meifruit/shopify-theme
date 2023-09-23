@@ -94,7 +94,12 @@
                 </svg>
               </div>
             </button>
+            {%- if product.selected_or_first_available_variant.inventory_quantity <= 5 -%}
+              <p>Low stock</p>
+            {%- else -%}
+              <p>Available!</p>
             {%- endif -%}
+          {%- endif -%}
 
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
