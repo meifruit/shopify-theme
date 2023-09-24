@@ -75,6 +75,8 @@
           -%}
           {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
             {%- else -%}
+            <p id="size-detail">Size detail: {{ product.selected_or_first_available_variant.metafields.custom.size }}</p>
+
             <button
               id="ProductSubmitButton-{{ section_id }}"
               type="submit"
