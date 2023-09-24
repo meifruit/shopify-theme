@@ -75,7 +75,25 @@
           -%}
           {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
             {%- else -%}
-            <p id="size-detail">Size detail: {{ product.selected_or_first_available_variant.metafields.custom.size }}</p>
+            <!-- here we load all the metafield info from the begining so the script takes from here -->
+            <script>
+              var productData = {
+                variants: [
+                  {% for variant in product.variants %}
+                  {
+                    id: {{ variant.id }},
+                    サイズ: "{{ variant.option1 }}",
+                    size_detail: "{{ variant.metafields.custom.size_detail }}"
+                  },
+                  {% endfor %}
+                ]
+              };
+            </script>
+
+            <!--Here the first metafield value will be placed and after it will be updated depending on the variant selection -->
+            <p id="size-detail">
+              Size detail: {{ product.selected_or_first_available_variant.metafields.custom.size_detail }}
+            </p>
 
             <button
               id="ProductSubmitButton-{{ section_id }}"
@@ -154,5 +172,6 @@
     </pickup-availability>
 
     <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'variant-selector.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 </div>
