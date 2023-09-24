@@ -129,22 +129,3 @@ if (!customElements.get("product-info")) {
     }
   );
 }
-
-// Get a reference to the "Size detail" element
-const sizeDetailElement = document.getElementById("size-detail");
-
-// Get a reference to all the radio buttons for size selection
-const sizeRadioButtons = document.querySelectorAll('input[name="サイズ"]');
-
-// Add event listeners to each radio button
-sizeRadioButtons.forEach((radioButton) => {
-  radioButton.addEventListener("change", () => {
-    // Get the selected size from the value attribute of the checked radio button
-    const selectedSize = document.querySelector(
-      'input[name="サイズ"]:checked'
-    ).value;
-
-    // Update the content of the "Size detail" element
-    sizeDetailElement.textContent = `Size detail: ${selectedSize}`;
-  });
-});
