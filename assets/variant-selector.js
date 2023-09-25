@@ -19,5 +19,3 @@ sizeRadioButtons.forEach((radioButton) => {
     sizeDetailElement.textContent = `Size detail: ${compositionDetails}`;
   });
 });
-
-// サイズ;
